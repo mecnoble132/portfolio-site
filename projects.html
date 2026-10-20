@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects — Clement Cruz Noble</title>
+  <meta name="description" content="A quick, searchable list of projects by Clement Cruz Noble, each with a live demo and source code link.">
+  <link rel="canonical" href="https://example.com/projects.html">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Projects — Clement Cruz Noble">
+  <meta property="og:description" content="A quick, searchable list of projects with live demos and source code.">
+  <meta property="og:url" content="https://example.com/projects.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script>
+    try {
+      const t = localStorage.getItem("theme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <script type="module" src="js/projects-page.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <nav class="container nav__inner" aria-label="Main">
+      <a class="nav__logo" href="index.html" data-site="name"></a>
+      <button id="menu-toggle" class="btn btn--icon nav__menu" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="nav__links" id="nav-links">
+        <a href="index.html#work">Work</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+        <a class="btn btn--primary" href="assets/resume.pdf" download hidden>Resume</a> <!-- hidden for now: remove the "hidden" attribute to show -->
+
+        <button id="theme-toggle" class="btn btn--icon" type="button" aria-label="Toggle dark mode" aria-pressed="false"></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="container pp">
+    <div class="pp__head">
+      <h1 class="pp__title">Projects</h1>
+      <p class="pp__sub"><span id="pp-count" aria-live="polite">&nbsp;</span> · tap any title to open the live demo</p>
+    </div>
+
+    <div class="toolbar">
+      <label class="sr-only" for="pp-search">Search projects</label>
+      <input class="toolbar__search" id="pp-search" type="search" placeholder="Search projects  ( / )" autocomplete="off" spellcheck="false">
+      <div class="view" role="group" aria-label="Layout">
+        <button type="button" data-view="list" aria-pressed="true" aria-label="List view">☰</button>
+        <button type="button" data-view="grid" aria-pressed="false" aria-label="Grid view">▦</button>
+      </div>
+      <div class="chips" id="pp-chips" role="group" aria-label="Filter by category"></div>
+    </div>
+
+    <ul class="plist" id="pp-list" data-view="list"></ul>
+
+    <p class="pp__empty" id="pp-empty" hidden>No projects match your search. <button type="button" id="pp-reset">Clear filters</button></p>
+    <noscript><p class="pp__empty">This page needs JavaScript to list the projects.</p></noscript>
+
+    <p class="pp__more">Like what you see? <a data-site-href="email|mailto:" data-site="email"></a> · <a href="index.html#contact">Contact</a></p>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 <span data-site="name"></span></div>
+  </footer>
+</body>
+</html>

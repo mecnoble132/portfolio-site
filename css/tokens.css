@@ -1,0 +1,64 @@
+:root {
+  --bg: #f4f5f7;
+  --surface: #e8eaee;
+  --border: #d5d9e0;
+  --text: #12151b;
+  --text-muted: #586070;
+  --accent: #2a4fd6;
+  --accent-2: #4a6fe8;
+  --accent-contrast: #ffffff;
+  --status: #22c55e;
+  --danger: #c4262e;
+  --success: #17703a;
+
+  --font: Geist, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk", Geist, system-ui, sans-serif;
+  --fw-display: 700;
+  --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  --fs-hero: clamp(2.75rem, 5.2vw, 5rem);
+  --fs-h2: clamp(1.75rem, 3vw, 2.25rem);
+  --fs-display: clamp(2.5rem, 7vw, 5.5rem);
+  --fs-card: 1.25rem;
+  --fs-body: 1rem;
+  --fs-small: 0.8125rem;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  --radius-card: 12px;
+  --radius-btn: 8px;
+  --radius-pill: 999px;
+  --section-pad: var(--space-8);
+  --nav-h: 72px;
+  --gutter: 20px;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --grain-opacity: 0.05;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0a0c10;
+  --surface: #12151b;
+  --border: #222733;
+  --text: #e8eaee;
+  --text-muted: #97a0b0;
+  --accent: #6e95ff;
+  --accent-2: #4a73e6;
+  --accent-contrast: #050b1f;
+  --danger: #e58a8f;
+  --success: #8fbf9f;
+  --grain-opacity: 0.07;
+}
+
+@media (min-width: 720px) {
+  :root { --nav-h: 80px; --gutter: 28px; }
+}
+@media (min-width: 960px) {
+  :root { --section-pad: var(--space-9); --gutter: 32px; }
+}

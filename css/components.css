@@ -1,0 +1,177 @@
+/* Shared by every page: layout, nav, buttons, tags, form, footer, placeholders */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  z-index: 200;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-btn);
+}
+.skip-link:focus { top: var(--space-2); }
+
+/* Nav (mobile first: links collapse into a panel) */
+/* Not sticky and no background: the nav is just the top row of the page and scrolls away with it. */
+.nav {
+  position: relative;
+  z-index: 40;
+  height: var(--nav-h);
+}
+.nav__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+.nav__logo { font-family: var(--font-display); font-weight: var(--fw-display); font-size: 1.375rem; line-height: 1; letter-spacing: -0.01em; color: var(--text); text-decoration: none; white-space: nowrap; }
+.nav__links {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--gutter) var(--space-6);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.nav__links.is-open { display: flex; }
+.nav__links a:not(.btn) {
+  position: relative;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1.2;
+  text-decoration: none;
+  padding: var(--space-2) 0;
+}
+.nav__links a:not(.btn):hover,
+.nav__links a.is-active,
+.nav__links a[aria-current] { color: var(--text); }
+.nav__links .btn { align-self: flex-start; margin-top: var(--space-3); }
+.nav__links .btn--icon { border-radius: 50%; }
+
+@media (min-width: 720px) {
+  .nav .nav__menu { display: none; }
+  .nav__links {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    background: none;
+    gap: var(--space-6);
+  }
+  .nav__links a:not(.btn) {
+    font-family: var(--font);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    padding: var(--space-2) 0;
+  }
+  /* Underline that draws in on hover and stays on the current item */
+  .nav__links a:not(.btn)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2px;
+    height: 1.5px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.35s var(--ease);
+  }
+  .nav__links a:not(.btn):hover::after,
+  .nav__links a.is-active::after,
+  .nav__links a[aria-current]::after { transform: scaleX(1); transform-origin: left; }
+  .nav__links .btn { align-self: auto; margin-top: 0; }
+  .nav__links .btn--primary { border-radius: var(--radius-pill); padding: 0 var(--space-6); }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--text-muted); }
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+.btn--primary:hover { border-color: var(--accent); filter: brightness(1.1); }
+.btn--icon { min-width: 44px; padding: 0; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn[hidden] { display: none; }
+
+/* Tags */
+.tags { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0; margin: 0; list-style: none; }
+.tags li {
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  line-height: 1.4;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+}
+
+/* Image placeholder: a flat tint per project via --hue */
+.ph { background: hsl(var(--hue, 40) 12% 16%); }
+
+/* Form */
+.form { display: grid; gap: var(--space-4); }
+.form__field { display: grid; gap: var(--space-2); }
+.form label { font-weight: 500; font-size: 0.9375rem; }
+.form input,
+.form textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+.form input:focus-visible,
+.form textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-color: var(--accent); }
+.form [aria-invalid="true"] { border-color: var(--danger); }
+.form__error { color: var(--danger); font-size: var(--fs-small); }
+.form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form .btn { justify-self: start; }
+.form__status { font-weight: 500; }
+.form__status:empty { display: none; }
+.form__status[data-type="success"] { color: var(--success); }
+.form__status[data-type="error"] { color: var(--danger); }
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding: var(--space-6) 0;
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
