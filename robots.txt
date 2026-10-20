@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Replace with your real domain
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://clementcruz.vercel.app/sitemap.xml

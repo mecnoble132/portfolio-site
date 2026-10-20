@@ -26,8 +26,8 @@ Until then the form validates and tells visitors to use email instead.
 ## Before launch checklist
 - [ ] Replace every placeholder in `data/site.js` and `data/projects.js`
 - [ ] Replace `assets/resume.pdf`
-- [ ] Set your real domain in `index.html` (canonical, `og:url`, JSON-LD), `robots.txt`, `sitemap.xml`
-- [ ] Add a 1200x630 `assets/images/og.png` and an `og:image` / `twitter:image` meta tag
+- [x] Domain set to `clementcruz.vercel.app` in `index.html`, `projects.html`, `robots.txt`, `sitemap.xml` (update all four if you move to a custom domain)
+- Preview image (`og:image`) is intentionally not used; Twitter card is `summary`
 - [ ] Update the title/description/JSON-LD name in `index.html` (they are static for crawlers)
 - [ ] Run Lighthouse
 
